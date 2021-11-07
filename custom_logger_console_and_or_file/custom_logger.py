@@ -144,13 +144,13 @@ def test_verbose():
 
     verbose_log.warning('We now log to both stdout and a file log')
 
+    verbose_log.disable_file_output()
     msg = 'Use color in a true TTY'
     if sys.stdout.isatty():
-        verbose_log.disable_file_output()
         verbose_log.info(Color.colored(Color.LIGHTYELLOW, msg))
-        verbose_log.enable_file_output()
     else:
         verbose_log.info(msg + ', but not here')
+    verbose_log.enable_file_output()
 
     verbose_log.framework('We now log everywhere irrespective of verbosity')
 
